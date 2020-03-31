@@ -1,4 +1,4 @@
-# Overledger Network's Community Treasury
+# Overledger Network Community Treasury
 
 The community treasury's role is to handle QNT payments flowing from users to the gateways in such a way as to disincentivise faulty behaviour from any user or gateway, and to do so in a manner where it can be held accountable to any observer.
 
