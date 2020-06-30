@@ -1,6 +1,6 @@
 # Interact with the Treasury
 
-In this section we will firstly describe what is in the Code folder and secondly describe how to use the associated scripts to interact with the treasury. If you would like to learn more about the treasury, see [this video introduction]().
+In this section we will firstly describe what is in the Code folder and secondly describe how to use the associated scripts to interact with the treasury. If you would like to learn more about the treasury, see [the treasury video introduction](https://www.youtube.com/channel/UCsz53-6ZYJCI0TtE4M_kdkA).
 
 In the Code folder you will see the SmartContracts subfolder that contains:
 - AbstractsAndInterfaces: These are the smart contract abstract and interfaces that the other contracts use.
@@ -31,17 +31,17 @@ Firstly you need to decide whether to interact with the Ropsten testnet or Ether
 For transparency, the treasury smart contract addresses are as follows:
 
 Testnet Treasury Smart Contract Addresses:
-- Treasury Proxy: 0x3e29e13ef3241d5858eeaff70e5a25f0b424c38b
-- Treasury Factory Proxy: 0x4a42aa05fb7cd58e9e388c82ec11b811bdf5ada7
-- Treasury Deposit Proxy: 0xb60bc1b22f322a5ddc214f0d0fb14260746d50bb
-- Treasury Rulelist Proxy: 0x963e705d50bde3f21a03cacf03e045b3599568ca
+- Treasury Proxy: `0x3e29e13ef3241d5858eeaff70e5a25f0b424c38b`
+- Treasury Factory Proxy: `0x4a42aa05fb7cd58e9e388c82ec11b811bdf5ada7`
+- Treasury Deposit Proxy: `0xb60bc1b22f322a5ddc214f0d0fb14260746d50bb`
+- Treasury Rulelist Proxy: `0x963e705d50bde3f21a03cacf03e045b3599568ca`
 
 
 Mainnet Treasury Smart Contract Addresses:
-- Treasury Proxy: 
-- Treasury Factory Proxy: 
-- Treasury Deposit Proxy: 
-- Treasury Rulelist Proxy: 
+- Treasury Proxy: `0x2ee1f3535325bc596f616f0591d1a1bc85164775`
+- Treasury Factory Proxy: `0x836fe8f597dc6cf4fb86bd3e86ad724dc4327560`
+- Treasury Deposit Proxy: `0x83e9918ddee45a661a31a63474f864d77b156724`
+- Treasury Rulelist Proxy: `0xff42f979d183c88e930bb07ab88ff1211679814b`
 
 Note that to see the code of the logic implementations of these proxy contracts, look the contract up on Etherscan, browse to it's Read Contract section and then click on the implementation address.
 
@@ -50,11 +50,13 @@ Note that to see the code of the logic implementations of these proxy contracts,
 Assuming you have the QNT in your QNTWallet address, now you need to approve the treasury factory smart contract to take the QNT and move it into your payment channel and escrowed smart contract.
 
 The testnet address to approve is: `0x4a42aa05fb7cd58e9e388c82ec11b811bdf5ada7`
-The mainnet address to approve is: 
+
+The mainnet address to approve is: `0x836fe8f597dc6cf4fb86bd3e86ad724dc4327560`
 
 This approval needs to be sent to the QNT ERC-20 smart contract.
 
 The QNT ERC-20 testnet address is: `0x19Bc592A0E1BAb3AFFB1A8746D8454743EE6E838`
+
 The QNT ERC-20 mainnet address is: `0x4a220E6096B25EADb88358cb44068A3248254675`
 
 This can be completed using your usual method (e.g. va a MetaMask transaction), or you can run the `1ApproveQNTTransfer.js` script from the chosen network's interactionScripts folder. If you use the script, make sure to fill in the `BEGIN VARIABLES TO UPDATE` section correctly.
