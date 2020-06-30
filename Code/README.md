@@ -45,6 +45,8 @@ Mainnet Treasury Smart Contract Addresses:
 
 Note that to see the code of the logic implementations of these proxy contracts, look the contract up on Etherscan, browse to it's Read Contract section and then click on the implementation address.
 
+## Interaction Steps
+
 ### Step 1: QNT Approval Ethereum Transaction
 
 Assuming you have the QNT in your QNTWallet address, now you need to approve the treasury factory smart contract to take the QNT and move it into your payment channel and escrowed smart contract.
