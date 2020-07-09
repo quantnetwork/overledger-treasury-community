@@ -63,7 +63,7 @@ async function deployContract(contractCode,overledger,thisCompLimit,thisCompPric
     //console.log("");
     //console.log('Your smart contract creation transaction hash is: ' + result.dltData[0].transactionHash);
     //console.log("");
-    if (result.dltData[0].transactionHash == null){
+    if ((result.dltData[0].transactionHash == null)||(result.dltData[0].status.status == 'error')){
         console.log("");
         throw result.dltData[0].status.code.toString() + "\nerror message: " + result.dltData[0].status.message.toString(); 
     } else {
@@ -130,7 +130,7 @@ async function deployContractWithParams(contractCode,overledger,SCInputParams,th
     //console.log("");
     //console.log('Your smart contract creation transaction hash is: ' + result.dltData[0].transactionHash);
     //console.log("");
-    if (result.dltData[0].transactionHash == null){
+    if ((result.dltData[0].transactionHash == null)||(result.dltData[0].status == 'error')){
         console.log("");
         throw result.dltData[0].status.code.toString() + "\nerror message: " + result.dltData[0].status.message.toString(); 
     } else {
@@ -200,7 +200,7 @@ async function deployProxyContract(contractCode,contractLogic,overledger,thisCom
     //console.log("");
     //console.log('Your smart contract creation transaction hash is: ' + result.dltData[0].transactionHash);
     //console.log("");
-    if (result.dltData[0].transactionHash == null){
+    if ((result.dltData[0].transactionHash == null)||(result.dltData[0].status.status == 'error')){
         console.log("");
         throw result.dltData[0].status.code.toString() + "\nerror message: " + result.dltData[0].status.message.toString(); 
     } else {
@@ -256,9 +256,11 @@ async function waitForTxConfirmation2(transactionHash,overledger,contract){
     if (txParams.data.dlt === null){
       return {blockNumber: "-1"};
     } else if (contract == false) {
+      //console.log(util.inspect(txParams, {showHidden: false, depth: 7}));
       //console.log('txParams.data.data.blockNumber: ' + txParams.data.data.blockNumber.toString());
       return {blockNumber: txParams.data.data.blockNumber.toString()};
     } else {
+      //console.log(util.inspect(txParams, {showHidden: false, depth: 7}));
       //console.log('txParams.data.data.blockNumber: ' + txParams.data.data.blockNumber.toString());
       return {blockNumber: txParams.data.data.blockNumber.toString(),smartContractAddress: txParams.data.data.creates.toString()};
     }
@@ -380,8 +382,7 @@ async function InvokeSmartContractFunctionWithInputParams(overledger,SCAddress,S
     console.log("");
     console.log('Your smart contract invocation transaction hash is: ' + result.dltData[0].transactionHash);
     console.log("");
-    //console.log(util.inspect(result, {showHidden: false, depth: 7}));
-    if (result.dltData[0].transactionHash == null){
+    if ((result.dltData[0].transactionHash == null)||(result.dltData[0].status.status == 'error')){
         console.log("");
         throw result.dltData[0].status.code.toString() + "\nerror message: " + result.dltData[0].status.message.toString(); 
     } else {
