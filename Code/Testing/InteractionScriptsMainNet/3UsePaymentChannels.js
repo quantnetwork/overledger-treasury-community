@@ -188,7 +188,6 @@ async function runFlow(){
   let functionTimeOut;
   let disputeTimeOut;
   while (count <= loopNumber){
-    sleep(2000);
     //generate the next total token amount
     newTokenAmount = tokensIncrements.mul(new BN((count).toString(), 10));
     currentTime = Math.round((new Date()).getTime() / 1000);
@@ -196,12 +195,17 @@ async function runFlow(){
     functionTimeOut = currentTime + secondsUntilTimeout;
     disputeTimeOut = currentTime + secondsUntilDisputeTimeout;
     //compute the message to send via layer 2 offchain
+    console.log("Payment channel message: " + count.toString());
+    console.log("(Note that the following amount is in hex format)");
     currentOffChainPayment  = await computeSignature(channelUserQNTAddress,newTokenAmount, channelCurrentNonce, functionTimeOut, disputeTimeOut,currentChannel);
+    console.log("");  
     count = count + 1;
+    await sleep(3000);
   }
-
   //the total we will now be pushing through the channel onchain
-  console.log("Total to claim: " + newTokenAmount.toString());
+  console.log("Total to send through the channel: " + newTokenAmount.toString());
+  console.log("Pushing the payment through the channel on chain using the last payment channel message generated!");
+  await sleep(3000);
 
   //** force an on-chain claim on the payment channel
   //* set the params of this claim
@@ -276,7 +280,7 @@ async function computeSignature(QNTAddressOfReceiver,tokenAmount, currentNonce, 
     const msgHash = constructPaymentMessage(QNTAddressOfReceiver, tokenAmount, currentNonce, timeout, disputeTimeout, paymentChannelAddress);
     const sig = await signMessage(msgHash, usersOperatorPrivateKey);
     const paramsToUseToClaimThePayment = { QNTAddressReceiver: QNTAddressOfReceiver, amount: tokenAmount, nonce: currentNonce, timeForResponse: timeout, timeForDispute: disputeTimeout, channelAddress: paymentChannelAddress, signature: sig.signature };
-    console.log(`Claiming the payment with these parameters: ${JSON.stringify(paramsToUseToClaimThePayment)}`);
+    console.log(`Message is: ${JSON.stringify(paramsToUseToClaimThePayment)}`);
     return sig;
 }
 
