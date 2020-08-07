@@ -61,6 +61,8 @@ The QNT ERC-20 testnet address is: `0x19Bc592A0E1BAb3AFFB1A8746D8454743EE6E838`
 
 The QNT ERC-20 mainnet address is: `0x4a220E6096B25EADb88358cb44068A3248254675`
 
+Note that on testnet, we have a faucet available at: `0x8a97cbDAf2181835AD93b1a5D63EbE3df1C47814'. To get 500 QNT, use the getTestnetQNT function.
+
 This can be completed using your usual method (e.g. va a MetaMask transaction), or you can run the `1ApproveQNTTransfer.js` script from the chosen network's interactionScripts folder. If you use the script, make sure to fill in the `BEGIN VARIABLES TO UPDATE` section correctly.
 
 Note that during this trial period for the testnet version, you need to approve 100 QNT that will go into your payment channel, and any amount you approved for the treasury factory smart contract that is greater than 100 QNT will be moved into your escrow deposit contract.
